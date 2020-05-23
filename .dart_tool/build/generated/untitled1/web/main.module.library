@@ -1,1 +1,0 @@
-{"isEntrypoint":true,"deps":["string_validator|lib/string_validator.dart","untitled1|web/controller.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["core","html","js"],"hasMain":true}

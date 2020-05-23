@@ -1,1 +1,0 @@
-{"isEntrypoint":true,"deps":["random_words|lib/src/syllables.dart","random_words|lib/src/word_pair.dart","random_words|lib/src/word_adjective.dart","random_words|lib/src/word_noun.dart","random_words|lib/src/words/adjectives.dart","random_words|lib/src/words/all.dart","random_words|lib/src/words/nouns.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}
