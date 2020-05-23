@@ -1,0 +1,1 @@
+final List<dynamic> styles = ['@import url(https://fonts.googleapis.com/css?family=Roboto);\n@import url(https://fonts.googleapis.com/css?family=Material+Icons);\n\nbody {\n  margin: 0 auto;\n  padding: 5vw;\n}\n\n#input, #question, #remarks, #guess{\n  font-size: 15pt;\n  padding: 10px;\n}\n\n\n* {\n  font-family: Roboto, Helvetica, Arial, sans-serif;\n}\n'];

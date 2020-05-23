@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["string_validator|lib/src/helpers.dart","string_validator|lib/src/validator.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}
