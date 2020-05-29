@@ -21,7 +21,7 @@
     </style>
   </head>
   <body>
-  <div class="card">
+  <div class="card" id="minimalDisplay">
     <div class="card-body">
       <p id="question"></p>
       <div class="form-row">
@@ -78,7 +78,8 @@
         </h2>
       </div>
       <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-        <div class="card-body scroll">
+        <div id="table_div" class="card-body scroll">
+          <p><button class="btn btn-warning btn-lg btn-block" id="export">Export Report</button></p>
           <table id="record" class="table">
             <thead class="thead-dark">
             <tr>
@@ -96,3 +97,5 @@
   </div>
   </body>
 </html>
+
+

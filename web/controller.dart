@@ -11,12 +11,41 @@ class model{
   int _hiddenNum;
   int _max;
   List _attempts = [] ;
+
   final Map <int, String> _msg = {
     0:'Game Over!',
     1:'You guess wrongly! Should be lower!',
     2: 'You guess wrongly! Should be higher!',
     3: 'You guess Correctly!'
   };
+
+  // setter class to json data
+  Map <String, dynamic> toJson() =>
+      {
+        'level': _level,
+        'life' : _life,
+        'points': _points,
+        'multiplier': _multiplier,
+        'attempt_counter':_attemptCounter,
+        'word_attempt': _word_attempt,
+        'hidden_num': _hiddenNum,
+        'max': _max,
+        'attempts': _attempts.join(',')
+      };
+
+  // getter json to class data
+  controller fromJson(Map json){
+    _level = json['level'];
+    _life = json['life'];
+    _points = json['points'];
+    _multiplier = json['multiplier'];
+    _attemptCounter = json['attempt_counter'];
+    _word_attempt = json['word_attempt'];
+    _hiddenNum = json['hidden_num'];
+    _max = json['max'];
+    _attempts = json['attempts'].toString().split(',');
+    return this;
+  }
 }
 
 class controller extends model{
@@ -78,12 +107,16 @@ class controller extends model{
     return challengeWord;
   }
 
-  void progress(){
-    _level++;
+  void updatePoints(){
     _points += _level * _life * _multiplier;
     if (_level % 5 == 0 && _level > 0){
       _multiplier*= 2;
     }
+  }
+
+  void progress(){
+    _level++;
     _life = 10;
   }
+
 }

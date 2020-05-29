@@ -9,6 +9,10 @@ environment:
 dependencies:
   angular: ^5.3.0
   angular_components: ^0.13.0
+  random_words: ^1.0.2
+  modern_charts: ^0.1.19
+  string_validator: ^0.1.4
+
 
 dev_dependencies:
   angular_test: ^2.3.0
@@ -17,6 +21,3 @@ dev_dependencies:
   build_web_compilers: ^2.3.0
   pedantic: ^1.8.0
   test: ^1.6.3
-  string_validator: ^0.1.4
-  random_words: ^1.0.2
-

@@ -4,9 +4,10 @@ import 'dart:js';
 import 'package:string_validator/string_validator.dart';
 import 'controller.dart';
 
+
 // ini global controller class
 var control = controller();
-List <controller> saveState = [];
+List <Map> state = [];
 
 void main() {
   control.randomNumber(); // Get the first upon page load
@@ -21,6 +22,54 @@ void main() {
   querySelector('#guess').onClick.listen((event) {
     game_stage();
   });
+
+  // Listen for click button
+  querySelector('#export').onClick.listen((event) {
+    getExport();
+  });
+
+}
+
+void getExport() {
+
+    if (state.isEmpty) {
+      context.callMethod(
+        'alert', ['No Historical Data Found!']);
+      return;
+    }
+
+    var html_content = '';
+    var window_opener =
+    context.callMethod('open',['','export','width=810,height=1000,top=10,left=100']);
+    var Dobj = window_opener['document'];
+    html_content = '<table border-collapse="collapse" id="records" width="100%" border="1px solid black" cellpadding="5px" class="table"> <thead class="thead-dark"> '
+        '<tr> '
+        '<th scope="col">Level</th> '
+        '<th scope="col">Attempts</th> '
+        '<th scope="col">Target Number</th> '
+        '<th scope="col">Points</th> '
+        '<th scope="col">Word Attempts Count</th>'
+        '</tr>'
+        '</thead>'
+        '<tbody>';
+
+    for (var json in state){
+      var obj = controller();
+      obj = obj.fromJson(json);
+      var currentLevel = obj.getLevel();
+      var list = obj.getAttempts().join(', ');
+      var target = obj.getHiddenNumber();
+      var points = obj.getPoints();
+      var wordCount = obj.getWordAttempt();
+      html_content+= '<tr border="1px solid black" cellpadding="5px"><td>${currentLevel}</td>'
+          '<td>${list}</td><td>${target}</td>'
+          '<td>${points}</td><td>${wordCount}</td>'
+          '</tr>';
+    }
+    html_content+= '</tbody></table>';
+    Dobj['body']['innerHTML'] += html_content;
+    window_opener.callMethod('print',[]);
+    window_opener.callMethod('close',[]);
 }
 
 void game_stage(){
@@ -31,9 +80,9 @@ void game_stage(){
       switch (result) {
         case 3:
           { // win step
-            saveState.add(control);
-            control.progress();
+            control.updatePoints();
             displayScoreboard();
+            control.progress();
             control.randomNumber();
             control.clearAttempts();
           }
@@ -42,7 +91,6 @@ void game_stage(){
           { // lose step
             context.callMethod(
                 'alert', ['The Target Number is ${control.getHiddenNumber()}']);
-            saveState.add(control);
             displayScoreboard();
             control = controller(); // reset class variable
             control.randomNumber();
@@ -70,14 +118,14 @@ void displayCurrentStat({int result}){
 
 void displayScoreboard(){
   var table = document.getElementById('record');
-  var currentLevel = control.getLevel() - 1;
+  var currentLevel = control.getLevel();
   var list = control.getAttempts().join(', ');
   var target = control.getHiddenNumber();
   var points = control.getPoints();
   var wordCount = control.getWordAttempt();
+  state.add(control.toJson());
   table.innerHtml += '<tr><td>${currentLevel}</td><td>${list}</td><td>${target}</td><td>${points}</td><td>${wordCount}</td></tr>';
 }
-
 
 void challengeUser(){
   var challengeWord = control.challenge();
