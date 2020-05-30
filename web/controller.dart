@@ -56,13 +56,23 @@ class controller extends model{
 
   int getLevel(){ return _level; }
 
+  void setLevel(int level){_level = level;}
+
   int getPoints(){ return _points; }
+
+  void setPoints(int points){_points = points;}
 
   int getLife(){ return _life; }
 
+  void setLife(int life){_life = life;}
+
   int getMultiplier(){ return _multiplier; }
 
+  void setMultiplier(int multiplier){_multiplier = multiplier;}
+
   int getWordAttempt(){ return _word_attempt; }
+
+  void setWordAttempt(int word_attempt){ _word_attempt = word_attempt; }
 
   int getHiddenNumber(){ return _hiddenNum; }
 
@@ -71,6 +81,8 @@ class controller extends model{
   List getAttempts(){ return _attempts; }
 
   void clearAttempts(){ _attempts.clear(); }
+
+  void setAttemptCounter(int attemptCounter){ _attemptCounter = attemptCounter; }
 
   void randomNumber(){
     _max = _level * 10;
@@ -99,7 +111,7 @@ class controller extends model{
 
   String challenge(){
     var challengeWord;
-    if (_attemptCounter % (_level * 2) == 0 && _level > 15) {
+    if ((_attemptCounter % (_level * 2)) == 0 && _level > 15) {
       var word = generateNoun().take(1).join(' ').trim();
       challengeWord = word;
       _word_attempt++;
@@ -107,16 +119,17 @@ class controller extends model{
     return challengeWord;
   }
 
-  void updatePoints(){
+  bool updatePoints(){
     _points += _level * _life * _multiplier;
     if (_level % 5 == 0 && _level > 0){
       _multiplier*= 2;
+      return true;
     }
+    return false;
   }
 
   void progress(){
     _level++;
     _life = 10;
   }
-
 }
