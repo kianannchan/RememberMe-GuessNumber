@@ -1,5 +1,6 @@
 # RememberMe-GuessNumber
-######![Dart CI](https://github.com/kianannchan/RememberMe-GuessNumber/workflows/Dart%20CI/badge.svg?branch=kianannchan-patch-1)
+![Dart CI](https://github.com/kianannchan/RememberMe-GuessNumber/workflows/Dart%20CI/badge.svg?branch=kianannchan-patch-1)
+
 *RememberMe-GuessNumber is a remake of the [GuessMe](https://github.com/kianannchan/GuessNumber) 
 that is developed using HTML5, Bootstrap 4.5 and [Dart](https://dart.dev/) Programming Language.*
 >Dart is a client-optimized programming language for apps on multiple platforms. 
