@@ -1,4 +1,5 @@
 # RememberMe-GuessNumber
+######![Dart CI](https://github.com/kianannchan/RememberMe-GuessNumber/workflows/Dart%20CI/badge.svg?branch=kianannchan-patch-1)
 *RememberMe-GuessNumber is a remake of the [GuessMe](https://github.com/kianannchan/GuessNumber) 
 that is developed using HTML5, Bootstrap 4.5 and [Dart](https://dart.dev/) Programming Language.*
 >Dart is a client-optimized programming language for apps on multiple platforms. 
@@ -78,8 +79,14 @@ Main (View) -> Controller -> Model
 + void randomNumber()
 + int guess(int)
 + String challenge()
-+ void updatePoints()
++ bool updatePoints()
 + void progress()
++ setAttemptCounter(int)
++ void setWordAttempt(int)
++ void setMultiplier(int)
++ void setLife(int)
++ void setPoints(int)
++ void setLevel(int)
 ```
 
 *main (View):*
